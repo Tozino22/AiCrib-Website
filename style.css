@@ -1,0 +1,918 @@
+/* Design Variables - Innovation Center Inspired (Minimalist & Professional) */
+:root {
+    --bg-white: #ffffff;
+    --bg-offwhite: #f8f9fa;
+    --bg-navy: #002147;
+    --bg-dark-navy: #001833;
+    
+    --text-dark: #002147;
+    --text-muted: #5e6d82;
+    --text-light: #ffffff;
+    --text-white-muted: rgba(255, 255, 255, 0.7);
+    
+    --accent-blue: #0ea5e9;
+    --accent-teal: #14b8a6;
+    
+    --grid-line: rgba(0, 33, 71, 0.05); /* Light gray lines for white sections */
+    --grid-line-on-dark: rgba(255, 255, 255, 0.05); /* Soft line for dark sections */
+    
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    --section-padding: 10rem 2rem;
+}
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-white);
+    color: var(--text-dark);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Precise Grid Background Pattern */
+.site-builder-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.site-builder-lines .line {
+    border-right: 1px solid var(--grid-line);
+    height: 100%;
+}
+
+.site-builder-lines .line:last-child {
+    border-right: none;
+}
+
+/* Section Colors Handling (rhythmic alternation) */
+section.dark-section {
+    background-color: var(--bg-navy);
+    color: var(--text-light);
+}
+
+section.dark-section .grid-line-overlay .line {
+    border-right-color: var(--grid-line-on-dark);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #3b82f6 0%, #14b8a6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+/* Navigation - Minimal & Professional */
+.glass-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 33, 71, 0.1);
+    transition: var(--transition-smooth);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 2.5rem; /* Perfect alignment with section container */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 2.25rem; /* Increased significantly for power */
+    font-weight: 800;
+    color: var(--bg-navy);
+    text-decoration: none;
+    letter-spacing: -0.05em;
+    line-height: 1;
+}
+
+.logo .dot { 
+    color: var(--accent-blue);
+    text-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
+}
+
+.subsidiary-badge {
+    font-size: 0.85rem; /* Larger and more readable */
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 700;
+    opacity: 0.9;
+    margin-top: 0.25rem;
+}
+
+.subsidiary-badge strong {
+    color: #b8922e; /* Deep professional gold */
+    border-bottom: 1.5px solid #b8922e;
+    padding-bottom: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: var(--transition-smooth);
+    opacity: 0.8;
+}
+
+.nav-links a:hover,
+.nav-links a.active-nav {
+    opacity: 1;
+    color: var(--accent-blue);
+}
+
+/* Buttons - Solid Pill style for IC feel */
+.btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 2rem;
+    border-radius: 0; /* Professional straight edges from IC inspo */
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-primary {
+    background: var(--bg-navy);
+    color: #fff !important;
+    border: 1px solid var(--bg-navy);
+}
+
+.btn-primary:hover {
+    background: var(--bg-dark-navy);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 33, 71, 0.2);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-dark);
+    border: 2px solid var(--bg-navy);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-navy);
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+section.dark-section .btn-secondary {
+    color: white;
+    border-color: white;
+}
+
+section.dark-section .btn-secondary:hover {
+    background: white;
+    color: var(--bg-navy) !important;
+}
+
+/* Layout Core */
+.section {
+    position: relative;
+    padding: 10rem 0; /* Vertical padding only, let container handle horizontal */
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2.5rem; /* Matches nav-container exactly */
+}
+
+/* Hero Section - Minimalist Professionalism */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 10rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+}
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 6rem; /* Huge impact from IC inspo */
+    margin-bottom: 2rem;
+    color: var(--bg-navy);
+}
+
+.hero p {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    margin-bottom: 3.5rem;
+    line-height: 1.6;
+    max-width: 85%;
+}
+
+.hero-actions { display: flex; gap: 1.5rem; }
+
+.hero-visual {
+    position: relative;
+}
+
+.mockup-card {
+    border-radius: 4px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 33, 71, 0.1);
+    padding: 3rem;
+    box-shadow: 0 40px 80px rgba(0, 33, 71, 0.08);
+}
+
+/* Active Engine Mockup Styles */
+.active-engine {
+    padding: 2.5rem !important;
+    background: #fff;
+    border-left: 6px solid var(--accent-blue);
+}
+
+.mockup-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 33, 71, 0.05);
+}
+
+.engine-id {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--bg-navy);
+    letter-spacing: 0.1em;
+}
+
+.status-beat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.beat-dot {
+    width: 6px;
+    height: 6px;
+    background: #14b8a6;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(20, 184, 166, 0.8);
+    animation: engine-pulse 2s infinite;
+}
+
+.beat-text {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #14b8a6;
+    letter-spacing: 0.05em;
+}
+
+.engine-main-metric {
+    margin-bottom: 2rem;
+}
+
+.metric-val {
+    display: block;
+    font-size: 4rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--bg-navy);
+    letter-spacing: -0.04em;
+}
+
+.metric-lab {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.mini-metrics {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.m-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.m-val {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--bg-navy);
+}
+
+.m-lab {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.m-line {
+    width: 1px;
+    height: 30px;
+    background: rgba(0, 33, 71, 0.1);
+}
+
+.deployment-stream {
+    background: #f8fafc;
+    border-radius: 2px;
+    padding: 1.25rem;
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.stream-line {
+    margin-bottom: 0.5rem;
+    display: flex;
+    gap: 0.75rem;
+}
+
+.stream-line:last-child { margin-bottom: 0; }
+
+.stream-line .suc { color: #14b8a6; font-weight: 800; }
+.stream-line .ld { color: var(--accent-blue); animation: spin 2s linear infinite; display: inline-block; }
+
+@keyframes engine-pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* Stats Section - IC checkerboard vibe */
+.stats-section {
+    background: var(--bg-navy);
+    color: white;
+}
+
+.stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0;
+}
+
+.stat-item {
+    padding: 5rem 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+
+.stat-big {
+    font-size: 4rem;
+    font-weight: 800;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+}
+
+.stat-text {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 700;
+}
+
+/* Grid Line Overlay for sections */
+.grid-line-overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.grid-line-overlay .line {
+    border-right: 1px solid var(--grid-line);
+    height: 100%;
+}
+
+.container-relative {
+    position: relative;
+    z-index: 1;
+}
+
+/* Features Grid - Minimal Cards */
+.section-title {
+    font-size: 4rem;
+    margin-bottom: 5rem;
+    color: var(--bg-navy);
+}
+
+.diagonal-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent-blue);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 0;
+    border: 1px solid rgba(0, 33, 71, 0.1);
+}
+
+.feature-card {
+    padding: 4rem 3rem;
+    border: 1px solid rgba(0, 33, 71, 0.05);
+    background: white;
+    transition: var(--transition-smooth);
+}
+
+.feature-card:hover {
+    background: var(--bg-offwhite);
+    transform: scale(0.98); /* Inward press for refined feel */
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.feature-card h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--bg-navy);
+}
+
+.feature-card p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* Solutions Grid */
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 0;
+}
+
+.solution-card {
+    padding: 5rem 4rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+.solution-number {
+    font-size: 8rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    opacity: 0.05;
+    font-weight: 900;
+}
+
+.solution-card h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.solution-list {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.solution-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Globally Ambitious Section Styling */
+.global-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 280px; /* Reduced for more compact architectural look */
+    gap: 1rem;
+    margin-top: 4rem;
+}
+
+.location-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.location-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: brightness(0.85);
+}
+
+.location-card:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.6);
+}
+
+.location-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to top, rgba(0, 33, 71, 0.6) 0%, transparent 60%);
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+
+.location-overlay h3 {
+    color: white;
+    font-size: 1.5rem; /* Slightly smaller for compact grid */
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.explore-circle {
+    width: 80px; /* Scaled down for compact grid */
+    height: 80px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: var(--transition-smooth);
+}
+
+.location-card:hover .explore-circle {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@media (max-width: 1024px) {
+    .global-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .global-grid {
+        grid-template-columns: 1fr;
+    }
+    .location-card {
+        grid-auto-rows: 300px;
+    }
+}
+
+.about-summary {
+    font-size: 2rem;
+    line-height: 1.4;
+    color: var(--bg-navy);
+    font-weight: 700;
+    margin: 2rem 0;
+}
+
+.about-details p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+/* Contact Form - Professional Minimal */
+.contact-section {
+    background: var(--bg-offwhite);
+}
+
+.contact-inner {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 6rem;
+}
+
+.contact-form {
+    padding: 0;
+    background: transparent;
+    display: grid;
+    gap: 2.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1.5rem 0;
+    border: none;
+    border-bottom: 2px solid rgba(0, 33, 71, 0.1);
+    background: transparent;
+    font-size: 1.1rem;
+    font-family: inherit;
+    color: var(--bg-navy);
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-bottom-color: var(--bg-navy);
+}
+
+.form-group label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--bg-navy);
+}
+
+/* Footer - Minimalist Architectural Style (Matching IC Inspo) */
+.glass-footer {
+    background: var(--bg-navy);
+    color: white;
+    padding: 6rem 0 4rem; /* More compact padding */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 4rem;
+}
+
+/* Footer Brand */
+.footer-logo {
+    color: white !important;
+    font-size: 3rem !important; /* Large impact */
+    opacity: 1;
+}
+
+/* Footer Center Info */
+.footer-info {
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.copyright-text {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 0.5rem;
+}
+
+.contact-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition-smooth);
+}
+
+.contact-links a span {
+    font-size: 1rem;
+    color: var(--accent-blue);
+}
+
+.contact-links a:hover {
+    color: var(--accent-blue);
+}
+
+.legal-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.legal-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: var(--transition-smooth);
+}
+
+.legal-links a:hover {
+    color: var(--accent-blue);
+}
+
+/* Footer Newsletter (Right) */
+.footer-newsletter {
+    flex: 0 0 350px;
+}
+
+.footer-newsletter h4 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.footer-newsletter p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-form {
+    display: flex;
+    border: 1px solid white;
+    padding: 2px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 0.75rem 1rem;
+    color: white;
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.newsletter-form button {
+    background: white;
+    color: var(--bg-navy);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.newsletter-form button:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.terms-note {
+    font-size: 0.7rem !important;
+    margin-top: 1rem;
+}
+
+.terms-note a {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Responsive Footer */
+@media (max-width: 1100px) {
+    .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 4rem;
+    }
+    .footer-newsletter {
+        flex: 1;
+        max-width: 500px;
+    }
+    .footer-info {
+        order: 3;
+    }
+    .footer-newsletter {
+        order: 2;
+    }
+    .footer-brand {
+        order: 1;
+    }
+}
+
+/* Fade In Animations */
+.fade-in-up, .fade-in-right {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: var(--transition-smooth);
+}
+
+.fade-in-up.visible, .fade-in-right.visible {
+    opacity: 1;
+    transform: translate(0);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .hero h1 { font-size: 4rem; }
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero p { max-width: 100%; margin: 0 auto 3.5rem; }
+    .hero-actions { justify-content: center; }
+    .footer-main { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3rem; }
+    .section-title { font-size: 2.5rem; }
+    .about-inner { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .stats-bar { grid-template-columns: 1fr; }
+}
