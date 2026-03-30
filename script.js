@@ -80,4 +80,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- AI CHATBOT LOGIC ---
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotPanel = document.getElementById('chatbotPanel');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
+    const chatMessages = document.getElementById('chatMessages');
+
+    if (chatbotToggle) {
+        chatbotToggle.addEventListener('click', () => {
+            chatbotPanel.classList.toggle('active');
+        });
+
+        chatbotClose.addEventListener('click', () => {
+            chatbotPanel.classList.remove('active');
+        });
+
+        const sendMessage = () => {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user-msg';
+            userMsg.textContent = text;
+            chatMessages.appendChild(userMsg);
+            chatInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Simulate Advisor response
+            setTimeout(() => {
+                const advisorBtn = document.createElement('div');
+                advisorBtn.className = 'message advisor-msg';
+                advisorBtn.textContent = "Thank you for reaching out. A specialized AI Governance Advisor is reviewing your request regarding '" + text + "'. Would you like to schedule a deep-dive call?";
+                chatMessages.appendChild(advisorBtn);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        };
+
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    }
+
+    // --- MOBILE MENU LOGIC ---
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navLinksPane = document.getElementById('navLinks');
+
+    if (mobileMenuToggle && navLinksPane) {
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinksPane.classList.toggle('active');
+            mobileMenuToggle.textContent = navLinksPane.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Auto-close on link click
+        navLinksPane.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksPane.classList.remove('active');
+                mobileMenuToggle.textContent = '☰';
+            });
+        });
+    }
 });
