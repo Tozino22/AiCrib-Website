@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TeeHay Consulting - Elite Cyber Risk, Security Architecture, and Governance for the digital age.">
+    <title>TeeHay Consulting | Elite Cyber Risk & Architecture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=4">
+    <style>
+        :root {
+            --accent-gold: #b8922e;
+            --accent-gold-light: #e2c97e;
+            --teehay-gradient: linear-gradient(135deg, #b8922e 0%, #e2c97e 100%);
+        }
+        .teehay-text-gradient {
+            background: var(--teehay-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        .th-logo-box {
+            width: 45px;
+            height: 45px;
+            background: var(--accent-gold);
+            color: var(--bg-navy);
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            margin-right: 12px;
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body class="teehay-page">
+    <!-- Architect Grid Lines -->
+    <div class="site-builder-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo" style="display: flex; align-items: center;">
+                    <div class="th-logo-box">TH</div>
+                    TeeHay<span class="dot" style="color: var(--accent-gold);">.</span>
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#cyber-services">Cyber Services</a></li>
+                <li><a href="#proven-risk">Risk Success</a></li>
+                <li><a href="index.html" class="subsidiary-badge" style="margin-top:0; border: 1px solid rgba(0,0,0,0.1); padding: 5px 12px; border-radius: 4px;">
+                    Visit <strong>AiCrib</strong> Subsidiary ↗
+                </a></li>
+                <li><a href="assessment.html" class="btn-primary" style="background: var(--accent-gold); border-color: var(--accent-gold);">Threat Assessment</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">☰</div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ===== HERO ===== -->
+        <header class="hero section" id="hero">
+            <canvas id="hero-canvas" class="hero-canvas"></canvas>
+            <div class="container hero-inner relative-z">
+                <div class="hero-text">
+                    <span class="diagonal-label fade-in-up" style="color: var(--accent-gold);">ELITE CYBER ADVISORY</span>
+                    <h1 class="fade-in-up delay-1">Engineered <span class="teehay-text-gradient">Cyber Resilience.</span></h1>
+                    <p class="fade-in-up delay-2">Elite architecture, governance, and offensive security for high-stakes environments. We don't just secure your data; we architect your survivability.</p>
+                    <div class="hero-actions fade-in-up delay-3">
+                        <a href="#cyber-services" class="btn-primary" style="background: var(--accent-gold); border-color: var(--accent-gold);">View Services</a>
+                        <a href="#proven-risk" class="btn-secondary" style="border-color: var(--accent-gold); color: var(--bg-navy);">Explore Results</a>
+                    </div>
+                </div>
+                <div class="hero-visual fade-in-right delay-2">
+                    <div class="mockup-card active-engine" style="border-left-color: var(--accent-gold);">
+                        <div class="mockup-header-row">
+                            <span class="engine-id">TH_SECURITY_POSTURE: SECURE</span>
+                            <div class="status-beat">
+                                <span class="beat-dot" style="background: var(--accent-gold); box-shadow: 0 0 10px var(--accent-gold);"></span>
+                                <span class="beat-text" style="color: var(--accent-gold);">ACTIVE MONITORING</span>
+                            </div>
+                        </div>
+
+                        <div class="engine-main-metric">
+                            <span class="metric-val">100%</span>
+                            <span class="metric-lab">GOVERNANCE ADHERENCE</span>
+                        </div>
+
+                        <div class="deployment-stream" style="background: rgba(184, 146, 46, 0.05);">
+                            <div class="stream-line"><span class="suc" style="color: var(--accent-gold);">✔</span> ARCHITECTURE_VALIDATED</div>
+                            <div class="stream-line"><span class="suc" style="color: var(--accent-gold);">✔</span> THREAT_MODELING: COMPLETE</div>
+                            <div class="stream-line"><span class="ld" style="color: var(--accent-gold);">⟳</span> PEN_TESTING_IN_PROGRESS...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== SERVICES ===== -->
+        <section id="cyber-services" class="features section">
+            <div class="container container-relative">
+                <span class="diagonal-label fade-in-up" style="color: var(--accent-gold);">CORE CAPABILITIES</span>
+                <h2 class="section-title fade-in-up">Elite <span class="teehay-text-gradient">Cyber Defense.</span></h2>
+                <div class="features-grid">
+                    <div class="feature-card fade-in-up delay-1">
+                        <span class="feature-icon">🏛️</span>
+                        <h3>Governance & Control</h3>
+                        <p>Establishing robust compliance frameworks, policy enforcement, and board-level risk oversight to ensure operational integrity.</p>
+                    </div>
+                    <div class="feature-card fade-in-up delay-2">
+                        <span class="feature-icon">🛡️</span>
+                        <h3>Security Operations</h3>
+                        <p>24/7 managed defense, rapid incident response, and continuous threat hunting to neutralize adversaries before impact.</p>
+                    </div>
+                    <div class="feature-card fade-in-up delay-3">
+                        <span class="feature-icon">🤺</span>
+                        <h3>Penetration Testing</h3>
+                        <p>Aggressive, real-world offensive simulations to uncover hidden vulnerabilities before malicious actors do.</p>
+                    </div>
+                    <div class="feature-card fade-in-up delay-3">
+                        <span class="feature-icon">🔍</span>
+                        <h3>Vulnerability Assessment</h3>
+                        <p>Systematic review of security weaknesses in an information system to evaluate susceptibility and remediate risk.</p>
+                    </div>
+                    <div class="feature-card fade-in-up delay-1">
+                        <span class="feature-icon">🗺️</span>
+                        <h3>Threat Modeling</h3>
+                        <p>Proactive architectural analysis to identify, quantify, and address security threats at the design phase.</p>
+                    </div>
+                    <div class="feature-card fade-in-up delay-2">
+                        <span class="feature-icon">⚙️</span>
+                        <h3>CI/CD & DevSecOps</h3>
+                        <p>Integrating high-speed security automation directly into your development pipelines for secure-by-default software.</p>
+                    </div>
+                    <div class="feature-card fade-in-up delay-3">
+                        <span class="feature-icon">📋</span>
+                        <h3>Sec Program Development</h3>
+                        <p>End-to-end creation of effective, scalable Information Security programs tailored to your organization's unique risk profile.</p>
+                    </div>
+                    <div class="feature-card fade-in-up delay-3">
+                        <span class="feature-icon">⚖️</span>
+                        <h3>Cyber Audit & Compliance</h3>
+                        <p>Rigorous auditing against global standards (ISO 27001, SOC2, HIPAA) to ensure verifiable trust and security.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROVEN RISK SUCCESS (REPLICATED STYLE) ===== -->
+        <section id="proven-risk" class="features section dark-section">
+            <div class="container container-relative">
+                <span class="diagonal-label fade-in-up" style="color: var(--accent-gold-light);">RISK MITIGATION RESULTS</span>
+                <h2 class="section-title fade-in-up" style="color: white;">Strategic <span class="teehay-text-gradient">Cyber Impact.</span></h2>
+                <div class="features-grid">
+                    <!-- 01 Banking -->
+                    <div class="feature-card fade-in-up delay-1" style="background: var(--bg-dark-navy); color: white; border-color: rgba(255,255,255,0.1);">
+                        <div class="card-icon">🏦</div>
+                        <h3 style="color: white;">Global Banking</h3>
+                        <p style="color: var(--text-white-muted);">Redesigned core SWIFT gateway architecture and implemented zero-trust governance controls across 14 regions.</p>
+                        <div style="font-size: 0.75rem; color: var(--accent-gold-light); font-weight: 800; margin-top: 2rem;">RESULT: 100% AUDIT COMPLIANCE</div>
+                    </div>
+                    <!-- 02 Tech -->
+                    <div class="feature-card fade-in-up delay-2" style="background: var(--bg-dark-navy); color: white; border-color: rgba(255,255,255,0.1);">
+                        <div class="card-icon">💻</div>
+                        <h3 style="color: white;">SaaS Unicorn</h3>
+                        <p style="color: var(--text-white-muted);">Enterprise-wide DevSecOps transformation, integrating automated threat modeling and AppSec scanning into CI/CD.</p>
+                        <div style="font-size: 0.75rem; color: var(--accent-gold-light); font-weight: 800; margin-top: 2rem;">RESULT: -85% VULN DENSITY</div>
+                    </div>
+                    <!-- 03 Healthcare -->
+                    <div class="feature-card fade-in-up delay-3" style="background: var(--bg-dark-navy); color: white; border-color: rgba(255,255,255,0.1);">
+                        <div class="card-icon">🏥</div>
+                        <h3 style="color: white;">Health Networks</h3>
+                        <p style="color: var(--text-white-muted);">Executed deep penetration testing and HIPAA compliance auditing for national medical record systems.</p>
+                        <div style="font-size: 0.75rem; color: var(--accent-gold-light); font-weight: 800; margin-top: 2rem;">RESULT: VERIFIED DATA PRIVACY</div>
+                    </div>
+                    <!-- 04 FinTech -->
+                    <div class="feature-card fade-in-up delay-1" style="background: var(--bg-dark-navy); color: white; border-color: rgba(255,255,255,0.1);">
+                        <div class="card-icon">💳</div>
+                        <h3 style="color: white;">FinTech Disruptor</h3>
+                        <p style="color: var(--text-white-muted);">Developed full-scale Information Security program from scratch, enabling successful Series C due diligence.</p>
+                        <div style="font-size: 0.75rem; color: var(--accent-gold-light); font-weight: 800; margin-top: 2rem;">RESULT: SECURE FUNDING EXIT</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT ===== -->
+        <section id="contact" class="contact-section section">
+            <div class="container contact-inner container-relative">
+                <div class="contact-info">
+                    <span class="diagonal-label fade-in-up" style="color: var(--accent-gold);">ENGAGE TEEHAY</span>
+                    <h2 class="section-title fade-in-up">Protect your <span class="teehay-text-gradient">Legacy.</span></h2>
+                    <p style="color: var(--text-muted); font-size: 1.25rem; line-height: 1.6;">Strategically architecting cyber resilience for the world's most demanding organizations.</p>
+                </div>
+                <div class="contact-form-wrap fade-in-up delay-1">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label>FULL NAME</label>
+                            <input type="text" id="contactName" placeholder="Executive Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>CORPORATE EMAIL</label>
+                            <input type="email" id="contactEmail" placeholder="exec@teehay.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>CYBER SECURITY GOALS</label>
+                            <textarea id="contactMessage" rows="1" placeholder="Governance, PenTesting, Architecture..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" id="contactSubmitBtn" style="background: var(--accent-gold); border-color: var(--accent-gold);">REQUEST BRIEFING</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="#" class="logo footer-logo" style="display: flex; align-items: center;">
+                    <div class="th-logo-box" style="width: 35px; height: 35px; font-size: 1rem;">TH</div>
+                    TeeHay<span class="dot" style="color: var(--accent-gold);">.</span>
+                </a>
+            </div>
+            <div class="footer-info">
+                <p class="copyright-text">© 2026 TEEHAY CONSULTING GROUP | ELITE CYBER ARCHITECTURE & RISK</p>
+                <div class="contact-links">
+                    <a href="mailto:info@teehay.com"><span>✉</span> info@teehay.com</a>
+                    <a href="tel:+15067219213"><span>✆</span> +1 (506) 721-9213</a>
+                    <a href="#"><span>📍</span> New York • London • Lagos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Script for Gold Animation -->
+    <script src="script.js?v=2"></script>
+    <script>
+        // Override animation colors for TeeHay theme
+        document.addEventListener('DOMContentLoaded', () => {
+           // We'll let the existing script run, but we could add specific TeeHay overrides here if needed.
+           // For now, it will use the Neural Network which looks great in teal too, 
+           // but we can add a bit of gold pulse to it.
+        });
+    </script>
+</body>
+</html>

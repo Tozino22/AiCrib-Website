@@ -147,6 +147,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('hero-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
+        const isTeeHay = document.body.classList.contains('teehay-page');
+        const themeColor = isTeeHay ? '184, 146, 46' : '14, 165, 233'; // Gold vs Blue
+        const signalColor = isTeeHay ? '#b8922e' : '#14b8a6'; // Gold vs Teal
         let width, height;
         let particles = [];
         let signals = [];
@@ -187,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius * s, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(14, 165, 233, ${opacity})`;
+                ctx.fillStyle = `rgba(${themeColor}, ${opacity})`;
                 ctx.fill();
 
                 if (this.isHub) {
@@ -195,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.radius * 3 * s, 0, Math.PI * 2);
                     const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 3 * s);
-                    grad.addColorStop(0, `rgba(20, 184, 166, ${opacity * 0.4})`);
+                    grad.addColorStop(0, `rgba(${isTeeHay ? '226, 201, 126' : '20, 184, 166'}, ${opacity * 0.4})`);
                     grad.addColorStop(1, 'transparent');
                     ctx.fillStyle = grad;
                     ctx.fill();
@@ -221,14 +224,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 ctx.beginPath();
                 ctx.arc(x, y, 2.5 * opacity, 0, Math.PI * 2);
-                ctx.fillStyle = '#14b8a6';
+                ctx.fillStyle = signalColor;
                 ctx.fill();
                 
                 // Connection trace
                 ctx.beginPath();
                 ctx.moveTo(this.p1.x, this.p1.y);
                 ctx.lineTo(x, y);
-                ctx.strokeStyle = `rgba(20, 184, 166, ${0.4 * opacity})`;
+                ctx.strokeStyle = `rgba(${isTeeHay ? '184, 146, 46' : '20, 184, 166'}, ${0.4 * opacity})`;
                 ctx.lineWidth = 1.5;
                 ctx.stroke();
             }
@@ -285,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                         
                         const opacity = (1 - distance / maxDist) * 0.3 / (p1.z + 1);
-                        ctx.strokeStyle = `rgba(14, 165, 233, ${opacity})`;
+                        ctx.strokeStyle = `rgba(${themeColor}, ${opacity})`;
                         ctx.lineWidth = 1;
                         ctx.stroke();
 
