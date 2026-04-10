@@ -207,7 +207,10 @@
 
     <!-- Minimal Nav -->
     <nav class="assessment-nav">
-        <a href="index.html" class="logo">AiCrib<span class="dot">.</span></a>
+        <a href="index.html" class="logo">
+            <img src="AiCrib_Icon_Only.png" alt="AiCrib Icon" class="nav-logo-icon">
+            AiCrib<span class="dot">.</span>
+        </a>
     </nav>
 
     <div class="assessment-container">
@@ -220,20 +223,18 @@
             
             <div class="highlight-box">
                 <h4>What's in it for you?</h4>
-                <p style="margin-bottom: 0; font-size: 0.95rem;">By spending just 3 minutes on this brief assessment, we will pinpoint exactly where your business is currently leaking revenue. As a thank you, you will unlock a <strong>Free 30-Minute Profit & Automation Roadmap Session</strong> (Booked directly on the next screen).</p>
+                <p style="margin-bottom: 0; font-size: 0.95rem;">By spending just 3 minutes on this brief assessment, we will pinpoint exactly where your business is currently leaking revenue. Submit your responses and our team will personally review your situation — <strong>you will be contacted shortly with your custom roadmap</strong>.</p>
             </div>
         </div>
 
         <!-- Start of Form -->
-        <!-- NOTE: Replace YOUR-EMAIL@DOMAIN.COM with your actual email address! -->
-        <!-- NOTE: Replace YOUR-CALENDLY-LINK with your actual booking link! -->
-        <form action="https://formsubmit.co/YOUR-EMAIL@DOMAIN.COM" method="POST" class="fade-in-up delay-1">
+        <form action="https://formsubmit.co/tosin.aina84@gmail.com" method="POST" class="fade-in-up delay-1">
             
             <!-- Honeypot (prevents spam and bot submissions) -->
             <input type="text" name="_honey" style="display:none">
             
-            <!-- Redirect straight to Calendar after they submit! -->
-            <input type="hidden" name="_next" value="https://calendly.com/YOUR-CALENDLY-LINK">
+            <!-- Disable CAPTCHA redirect -->
+            <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_subject" value="New AiCrib Assessment Submission!">
 
             <!-- SECTION 1 -->
@@ -423,10 +424,10 @@
             </div>
 
             <button type="submit" class="submit-btn" id="submitBtn">
-                Submit Assessment & Unlock Calendar
+                Submit Assessment
             </button>
             <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; padding-bottom: 2rem;">
-                By clicking submit, you will be redirected to our private calendar to book your free session.
+                By submitting, you agree to be contacted by our team. We will review your responses and reach out shortly.
             </p>
 
         </form>
