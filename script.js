@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
+        let signals = [];
 
         function resize() {
             width = canvas.width = window.innerWidth;
@@ -161,9 +162,10 @@ document.addEventListener('DOMContentLoaded', () => {
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.7;
-                this.vy = (Math.random() - 0.5) * 0.7;
-                this.radius = Math.random() * 2 + 1;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 3 + 1.5;
+                this.glow = 0;
             }
             update() {
                 this.x += this.vx;
@@ -171,17 +173,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                if (this.glow > 0) this.glow -= 0.05;
             }
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(14, 165, 233, 0.5)';
+                ctx.fillStyle = `rgba(14, 165, 233, ${0.4 + this.glow})`;
                 ctx.fill();
+                
+                if (this.glow > 0) {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius * 2, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(20, 184, 166, ${this.glow * 0.3})`;
+                    ctx.fill();
+                }
             }
         }
 
-        // Adjust particle count based on screen size
-        const particleCount = window.innerWidth < 768 ? 40 : 80;
+        class Signal {
+            constructor(p1, p2) {
+                this.p1 = p1;
+                this.p2 = p2;
+                this.t = 0;
+                this.speed = 0.01 + Math.random() * 0.02;
+            }
+            update() {
+                this.t += this.speed;
+                if (this.t >= 1) return false;
+                return true;
+            }
+            draw() {
+                const x = this.p1.x + (this.p2.x - this.p1.x) * this.t;
+                const y = this.p1.y + (this.p2.y - this.p1.y) * this.t;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, 2.5, 0, Math.PI * 2);
+                ctx.fillStyle = '#14b8a6';
+                ctx.fill();
+                
+                // Trail
+                ctx.beginPath();
+                ctx.moveTo(this.p1.x + (this.p2.x - this.p1.x) * (this.t - 0.1), this.p1.y + (this.p2.y - this.p1.y) * (this.t - 0.1));
+                ctx.lineTo(x, y);
+                ctx.strokeStyle = '#14b8a6';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+        }
+
+        const particleCount = window.innerWidth < 768 ? 40 : 100;
         for (let i = 0; i < particleCount; i++) {
             particles.push(new Particle());
         }
@@ -207,39 +248,50 @@ document.addEventListener('DOMContentLoaded', () => {
             particles.forEach(p => {
                 p.update();
                 p.draw();
+
+                // Mouse influence
+                if (mouse.x != null) {
+                    const dx = mouse.x - p.x;
+                    const dy = mouse.y - p.y;
+                    const d = Math.sqrt(dx*dx + dy*dy);
+                    if (d < 150) {
+                        p.x += dx * 0.01;
+                        p.y += dy * 0.01;
+                        p.glow = 0.5;
+                    }
+                }
             });
 
             for (let i = 0; i < particles.length; i++) {
+                let connections = 0;
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
 
-                    if (distance < 140) {
+                    if (distance < 160) {
+                        connections++;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(14, 165, 233, ${0.15 - distance / 933})`; // 140/933 = 0.15 approx
+                        ctx.strokeStyle = `rgba(14, 165, 233, ${0.25 - distance / 640})`;
                         ctx.lineWidth = 1;
                         ctx.stroke();
-                    }
-                }
-                
-                // Mouse interaction
-                if (mouse.x != null) {
-                    const dx = particles[i].x - mouse.x;
-                    const dy = particles[i].y - mouse.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 180) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(mouse.x, mouse.y);
-                        ctx.strokeStyle = `rgba(20, 184, 166, ${0.25 - distance / 720})`;
-                        ctx.lineWidth = 1;
-                        ctx.stroke();
+                        
+                        // Occasionally spawn a signal
+                        if (Math.random() < 0.001 && signals.length < 50) {
+                            signals.push(new Signal(particles[i], particles[j]));
+                        }
                     }
                 }
             }
+
+            signals = signals.filter(s => {
+                const alive = s.update();
+                if (alive) s.draw();
+                return alive;
+            });
+
             requestAnimationFrame(animate);
         }
         animate();
