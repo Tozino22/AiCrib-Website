@@ -159,33 +159,45 @@ document.addEventListener('DOMContentLoaded', () => {
         resize();
 
         class Particle {
-            constructor() {
+            constructor(isHub = false) {
+                this.isHub = isHub;
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 3 + 1.5;
-                this.glow = 0;
+                this.vx = (Math.random() - 0.5) * (isHub ? 0.2 : 0.6);
+                this.vy = (Math.random() - 0.5) * (isHub ? 0.2 : 0.6);
+                this.z = Math.random() * 2; // Depth layer
+                this.radius = isHub ? (Math.random() * 5 + 5) : (Math.random() * 2 + 1);
+                this.baseOpacity = isHub ? 0.8 : 0.4;
+                this.pulse = Math.random() * Math.PI * 2;
+                this.connections = [];
             }
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
 
+                // Border bounce
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
-
-                if (this.glow > 0) this.glow -= 0.05;
+                
+                this.pulse += 0.03;
             }
             draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(14, 165, 233, ${0.4 + this.glow})`;
-                ctx.fill();
+                const s = 1 + Math.sin(this.pulse) * 0.2;
+                const opacity = this.baseOpacity / (this.z + 1);
                 
-                if (this.glow > 0) {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius * s, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(14, 165, 233, ${opacity})`;
+                ctx.fill();
+
+                if (this.isHub) {
+                    // Neuron glow
                     ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius * 2, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(20, 184, 166, ${this.glow * 0.3})`;
+                    ctx.arc(this.x, this.y, this.radius * 3 * s, 0, Math.PI * 2);
+                    const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 3 * s);
+                    grad.addColorStop(0, `rgba(20, 184, 166, ${opacity * 0.4})`);
+                    grad.addColorStop(1, 'transparent');
+                    ctx.fillStyle = grad;
                     ctx.fill();
                 }
             }
@@ -196,100 +208,99 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.p1 = p1;
                 this.p2 = p2;
                 this.t = 0;
-                this.speed = 0.01 + Math.random() * 0.02;
+                this.speed = (0.015 + Math.random() * 0.03) / (p1.z + 1);
             }
             update() {
                 this.t += this.speed;
-                if (this.t >= 1) return false;
-                return true;
+                return this.t < 1;
             }
             draw() {
                 const x = this.p1.x + (this.p2.x - this.p1.x) * this.t;
                 const y = this.p1.y + (this.p2.y - this.p1.y) * this.t;
+                const opacity = 1 / (this.p1.z + 1);
                 
                 ctx.beginPath();
-                ctx.arc(x, y, 2.5, 0, Math.PI * 2);
+                ctx.arc(x, y, 2.5 * opacity, 0, Math.PI * 2);
                 ctx.fillStyle = '#14b8a6';
                 ctx.fill();
                 
-                // Trail
+                // Connection trace
                 ctx.beginPath();
-                ctx.moveTo(this.p1.x + (this.p2.x - this.p1.x) * (this.t - 0.1), this.p1.y + (this.p2.y - this.p1.y) * (this.t - 0.1));
+                ctx.moveTo(this.p1.x, this.p1.y);
                 ctx.lineTo(x, y);
-                ctx.strokeStyle = '#14b8a6';
-                ctx.lineWidth = 2;
+                ctx.strokeStyle = `rgba(20, 184, 166, ${0.4 * opacity})`;
+                ctx.lineWidth = 1.5;
                 ctx.stroke();
             }
         }
 
-        const particleCount = window.innerWidth < 768 ? 40 : 100;
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
+        const particleCount = window.innerWidth < 768 ? 40 : 120;
+        const hubsCount = 8;
+        
+        for (let i = 0; i < hubsCount; i++) particles.push(new Particle(true));
+        for (let i = 0; i < particleCount; i++) particles.push(new Particle(false));
 
         let mouse = { x: null, y: null };
         const heroSection = document.getElementById('hero');
-        
         if (heroSection) {
             heroSection.addEventListener('mousemove', (e) => {
                 const rect = canvas.getBoundingClientRect();
                 mouse.x = e.clientX - rect.left;
                 mouse.y = e.clientY - rect.top;
             });
-            heroSection.addEventListener('mouseleave', () => {
-                mouse.x = null;
-                mouse.y = null;
-            });
+            heroSection.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
         }
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
 
+            // Update & Draw Particles
             particles.forEach(p => {
                 p.update();
-                p.draw();
-
-                // Mouse influence
-                if (mouse.x != null) {
-                    const dx = mouse.x - p.x;
-                    const dy = mouse.y - p.y;
-                    const d = Math.sqrt(dx*dx + dy*dy);
-                    if (d < 150) {
-                        p.x += dx * 0.01;
-                        p.y += dy * 0.01;
-                        p.glow = 0.5;
-                    }
+                if (mouse.x && Math.sqrt((mouse.x - p.x)**2 + (mouse.y - p.y)**2) < 200) {
+                    p.x += (mouse.x - p.x) * 0.02;
+                    p.y += (mouse.y - p.y) * 0.02;
                 }
+                p.draw();
             });
 
+            // Handle Connections
             for (let i = 0; i < particles.length; i++) {
-                let connections = 0;
+                const p1 = particles[i];
                 for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const p2 = particles[j];
+                    const distance = Math.sqrt((p1.x - p2.x)**2 + (p1.y - p2.y)**2);
+                    const maxDist = (p1.isHub || p2.isHub) ? 250 : 150;
 
-                    if (distance < 160) {
-                        connections++;
+                    if (distance < maxDist) {
                         ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(14, 165, 233, ${0.25 - distance / 640})`;
+                        ctx.moveTo(p1.x, p1.y);
+                        // Optional: Bezier curves to hubs for "neural" feel
+                        if (p1.isHub || p2.isHub) {
+                           const midX = (p1.x + p2.x) / 2 + (Math.sin(p1.pulse) * 20);
+                           const midY = (p1.y + p2.y) / 2 + (Math.cos(p2.pulse) * 20);
+                           ctx.quadraticCurveTo(midX, midY, p2.x, p2.y);
+                        } else {
+                           ctx.lineTo(p2.x, p2.y);
+                        }
+                        
+                        const opacity = (1 - distance / maxDist) * 0.3 / (p1.z + 1);
+                        ctx.strokeStyle = `rgba(14, 165, 233, ${opacity})`;
                         ctx.lineWidth = 1;
                         ctx.stroke();
-                        
-                        // Occasionally spawn a signal
-                        if (Math.random() < 0.001 && signals.length < 50) {
-                            signals.push(new Signal(particles[i], particles[j]));
+
+                        if (Math.random() < 0.003 && signals.length < 60) {
+                            signals.push(new Signal(p1, p2));
                         }
                     }
                 }
             }
 
+            // Synaptic firings
             signals = signals.filter(s => {
-                const alive = s.update();
-                if (alive) s.draw();
-                return alive;
+                const active = s.update();
+                if (active) s.draw();
+                return active;
             });
 
             requestAnimationFrame(animate);
