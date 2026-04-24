@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => sectionObserver.observe(section));
 
 
-    // ===== CONTACT FORM SIMULATION =====
+    // ===== CONTACT FORM (AJAX) =====
     const form        = document.getElementById('contactForm');
     const submitBtn   = document.getElementById('contactSubmitBtn');
 
@@ -55,27 +55,69 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Simulate submission
             submitBtn.disabled = true;
             submitBtn.textContent = 'INITIALIZING...';
 
-            setTimeout(() => {
-                form.querySelectorAll('input, select, textarea').forEach(el => {
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(res => {
+                form.querySelectorAll('input:not([type="hidden"]), select, textarea').forEach(el => {
                     el.value = '';
                     el.style.borderBottomColor = '';
                 });
-                submitBtn.textContent = 'SUCCESS';
+                submitBtn.textContent = '✔ SENT SUCCESSFULLY';
                 setTimeout(() => {
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'INITIALIZE CONTACT';
-                }, 2000);
-            }, 1200);
+                }, 3000);
+            }).catch(() => {
+                submitBtn.textContent = 'ERROR — RETRY';
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'INITIALIZE CONTACT';
+                }, 3000);
+            });
         });
 
         // Clear error on input
         form.querySelectorAll('input').forEach(input => {
             input.addEventListener('input', () => {
                 input.style.borderBottomColor = '';
+            });
+        });
+    }
+
+    // ===== NEWSLETTER FORM (AJAX) =====
+    const newsletterForm = document.getElementById('newsletterForm');
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const btn = newsletterForm.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+
+            fetch(newsletterForm.action, {
+                method: 'POST',
+                body: new FormData(newsletterForm),
+                headers: { 'Accept': 'application/json' }
+            }).then(res => {
+                newsletterForm.querySelector('input[type="email"]').value = '';
+                btn.textContent = '✔ Subscribed!';
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                }, 3000);
+            }).catch(() => {
+                btn.textContent = 'Error — Retry';
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                }, 3000);
             });
         });
     }

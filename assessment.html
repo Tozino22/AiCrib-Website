@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Profit & Automation Assessment | AiCrib</title>
+    <title>Profit & Automation Assessment | AICrib</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
         /* Mobile-First Assessment Styles */
         body {
             background-color: var(--bg-offwhite);
         }
-        
+
         /* Minimal Nav specific to assessment */
         .assessment-nav {
             position: fixed;
-            top: 0; left: 0; width: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             padding: 1rem 1.5rem;
             z-index: 100;
             display: flex;
@@ -79,7 +84,7 @@
         .section-header {
             margin-bottom: 2rem;
             padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .section-header h3 {
@@ -87,7 +92,7 @@
             color: var(--bg-navy);
             margin-bottom: 0.25rem;
         }
-        
+
         .section-header p {
             font-size: 0.9rem;
             color: var(--text-muted);
@@ -159,14 +164,14 @@
             transition: all 0.2s ease;
         }
 
-        .radio-label input:checked + .radio-option {
+        .radio-label input:checked+.radio-option {
             border-color: var(--accent-blue);
             background: rgba(14, 165, 233, 0.05);
             color: var(--bg-navy);
             font-weight: 700;
         }
 
-        .radio-label input:checked + .radio-option::before {
+        .radio-label input:checked+.radio-option::before {
             border-color: var(--accent-blue);
             background: var(--accent-blue);
             box-shadow: inset 0 0 0 4px #ffffff;
@@ -196,13 +201,26 @@
 
         /* Mobile specific adjustments */
         @media (max-width: 600px) {
-            .intro-card h1 { font-size: 1.8rem; }
-            .survey-card { padding: 2rem 1.25rem; }
-            .text-input, .radio-option { padding: 1rem; }
-            .assessment-container { padding-top: 5rem; }
+            .intro-card h1 {
+                font-size: 1.8rem;
+            }
+
+            .survey-card {
+                padding: 2rem 1.25rem;
+            }
+
+            .text-input,
+            .radio-option {
+                padding: 1rem;
+            }
+
+            .assessment-container {
+                padding-top: 5rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Minimal Nav -->
@@ -213,28 +231,34 @@
     </nav>
 
     <div class="assessment-container">
-        
+
         <!-- Welcome Card -->
         <div class="survey-card intro-card fade-in-up">
             <h1>The Time Recovery & Profit Multiplier Assessment</h1>
-            <p>You started your business to make a serious profit, experience freedom, and create an impact—not to be bogged down by endless spreadsheets, repetitive paperwork, and chasing down unclosed leads.</p>
-            <p>We help forward-thinking business owners uncover the hidden bottlenecks costing them money, eliminate the "busywork," and streamline operations so they can <strong>maximize profit margins</strong> and scale without burning out.</p>
-            
+            <p>You started your business to make a serious profit, experience freedom, and create an impact—not to be
+                bogged down by endless spreadsheets, repetitive paperwork, and chasing down unclosed leads.</p>
+            <p>We help forward-thinking business owners uncover the hidden bottlenecks costing them money, eliminate the
+                "busywork," and streamline operations so they can <strong>maximize profit margins</strong> and scale
+                without burning out.</p>
+
             <div class="highlight-box">
                 <h4>What's in it for you?</h4>
-                <p style="margin-bottom: 0; font-size: 0.95rem;">By spending just 3 minutes on this brief assessment, we will pinpoint exactly where your business is currently leaking revenue. Submit your responses and our team will personally review your situation — <strong>you will be contacted shortly with your custom roadmap</strong>.</p>
+                <p style="margin-bottom: 0; font-size: 0.95rem;">By spending just 3 minutes on this brief assessment, we
+                    will pinpoint exactly where your business is currently leaking revenue. Submit your responses and
+                    our team will personally review your situation — <strong>you will be contacted shortly with your
+                        custom roadmap</strong>.</p>
             </div>
         </div>
 
         <!-- Start of Form -->
         <form action="https://formsubmit.co/tosin.aina84@gmail.com" method="POST" class="fade-in-up delay-1">
-            
+
             <!-- Honeypot (prevents spam and bot submissions) -->
             <input type="text" name="_honey" style="display:none">
-            
+
             <!-- Disable CAPTCHA redirect -->
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_subject" value="New AiCrib Assessment Submission!">
+            <input type="hidden" name="_subject" value="New AICrib Assessment Submission!">
 
             <!-- SECTION 1 -->
             <div class="survey-card">
@@ -245,12 +269,15 @@
 
                 <div class="question-group">
                     <label class="question-label">1. What industry or niche does your business primarily serve?</label>
-                    <input type="text" name="Industry" class="text-input" placeholder="e.g., Real Estate, Healthcare, HVAC..." required>
+                    <input type="text" name="Industry" class="text-input"
+                        placeholder="e.g., Real Estate, Healthcare, HVAC..." required>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">2. When you think about your day-to-day operations, what core service or product brings in the highest profit margin?</label>
-                    <input type="text" name="Core Service" class="text-input" placeholder="Your most profitable offering..." required>
+                    <label class="question-label">2. When you think about your day-to-day operations, what core service
+                        or product brings in the highest profit margin?</label>
+                    <input type="text" name="Core Service" class="text-input"
+                        placeholder="Your most profitable offering..." required>
                 </div>
             </div>
 
@@ -258,17 +285,22 @@
             <div class="survey-card">
                 <div class="section-header">
                     <h3>Section 2: Uncovering "Profit & Time Sinks"</h3>
-                    <p>Every business has them—those tedious tasks that eat up your day but don't actually grow the business. Let's shine a light on them.</p>
+                    <p>Every business has them—those tedious tasks that eat up your day but don't actually grow the
+                        business. Let's shine a light on them.</p>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">3. What is the one daily or weekly task you absolutely dread doing?</label>
-                    <textarea name="Dreaded Task" class="text-input" rows="3" placeholder="e.g., chasing down client info, quoting manually, copying data..." required></textarea>
+                    <label class="question-label">3. What is the one daily or weekly task you absolutely dread
+                        doing?</label>
+                    <textarea name="Dreaded Task" class="text-input" rows="3"
+                        placeholder="e.g., chasing down client info, quoting manually, copying data..."
+                        required></textarea>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">4. Roughly how many hours a week do you or your team spend on repetitive, manual tasks?</label>
-                    
+                    <label class="question-label">4. Roughly how many hours a week do you or your team spend on
+                        repetitive, manual tasks?</label>
+
                     <label class="radio-label">
                         <input type="radio" name="Manual Hours" value="0-5 hours" required>
                         <div class="radio-option">0 - 5 hours</div>
@@ -283,13 +315,16 @@
                     </label>
                     <label class="radio-label">
                         <input type="radio" name="Manual Hours" value="20+ hours (Losing money!)">
-                        <div class="radio-option">20+ hours (You are definitely losing money here—we need to talk!)</div>
+                        <div class="radio-option">20+ hours (You are definitely losing money here—we need to talk!)
+                        </div>
                     </label>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">5. If you could wave a magic wand and instantly have one part of your business handle itself effortlessly, what would it be?</label>
-                    <input type="text" name="Magic Wand Task" class="text-input" placeholder="I wish I didn't have to..." required>
+                    <label class="question-label">5. If you could wave a magic wand and instantly have one part of your
+                        business handle itself effortlessly, what would it be?</label>
+                    <input type="text" name="Magic Wand Task" class="text-input"
+                        placeholder="I wish I didn't have to..." required>
                 </div>
             </div>
 
@@ -297,12 +332,14 @@
             <div class="survey-card">
                 <div class="section-header">
                     <h3>Section 3: Custom Experience & Lost Sales</h3>
-                    <p>Fast responses equal closed deals. Let's see how we can make your customer experience completely frictionless.</p>
+                    <p>Fast responses equal closed deals. Let's see how we can make your customer experience completely
+                        frictionless.</p>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">6. Do leads or customer inquiries ever "slip through the cracks" because you or your team are too tied up to respond immediately?</label>
-                    
+                    <label class="question-label">6. Do leads or customer inquiries ever "slip through the cracks"
+                        because you or your team are too tied up to respond immediately?</label>
+
                     <label class="radio-label">
                         <input type="radio" name="Slipped Leads" value="Yes, leaving money on table" required>
                         <div class="radio-option">Yes, we are definitely leaving money on the table.</div>
@@ -318,8 +355,9 @@
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">7. How long does it typically take for a new inquiry to get a response from your business?</label>
-                    
+                    <label class="question-label">7. How long does it typically take for a new inquiry to get a response
+                        from your business?</label>
+
                     <label class="radio-label">
                         <input type="radio" name="Response Time" value="Under 5 minutes" required>
                         <div class="radio-option">Under 5 minutes (We're incredibly fast!)</div>
@@ -339,7 +377,8 @@
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">8. Are your clients ever frustrated by delays in getting quotes or scheduling appointments, potentially costing you referrals?</label>
+                    <label class="question-label">8. Are your clients ever frustrated by delays in getting quotes or
+                        scheduling appointments, potentially costing you referrals?</label>
                     <label class="radio-label">
                         <input type="radio" name="Client Frustration" value="Yes" required>
                         <div class="radio-option">Yes, it's a bottleneck we face.</div>
@@ -359,11 +398,13 @@
             <div class="survey-card">
                 <div class="section-header">
                     <h3>Section 4: Scaling Your Revenue</h3>
-                    <p>You deserve to grow without just hiring more expensive manual labor. Let's plan for that success.</p>
+                    <p>You deserve to grow without just hiring more expensive manual labor. Let's plan for that success.
+                    </p>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">9. What is the biggest hurdle stopping your business from doubling its revenue right now?</label>
+                    <label class="question-label">9. What is the biggest hurdle stopping your business from doubling its
+                        revenue right now?</label>
                     <label class="radio-label">
                         <input type="radio" name="Growth Hurdle" value="Not enough leads" required>
                         <div class="radio-option">We don't have enough high-quality leads.</div>
@@ -374,7 +415,8 @@
                     </label>
                     <label class="radio-label">
                         <input type="radio" name="Growth Hurdle" value="Shrinking margins">
-                        <div class="radio-option">Our profit margins shrink because manual labor overhead is so high.</div>
+                        <div class="radio-option">Our profit margins shrink because manual labor overhead is so high.
+                        </div>
                     </label>
                     <label class="radio-label">
                         <input type="radio" name="Growth Hurdle" value="Disorganized systems">
@@ -383,10 +425,12 @@
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">10. Imagine you suddenly got 15 hours back every single week because your tedious tasks were handled effortlessly. What would you do?</label>
+                    <label class="question-label">10. Imagine you suddenly got 15 hours back every single week because
+                        your tedious tasks were handled effortlessly. What would you do?</label>
                     <label class="radio-label">
                         <input type="radio" name="Saved Time Usage" value="High level strategy" required>
-                        <div class="radio-option">Focus strictly on high-level strategy and expanding the business.</div>
+                        <div class="radio-option">Focus strictly on high-level strategy and expanding the business.
+                        </div>
                     </label>
                     <label class="radio-label">
                         <input type="radio" name="Saved Time Usage" value="More family time">
@@ -425,8 +469,10 @@
             <button type="submit" class="submit-btn" id="submitBtn">
                 Submit Assessment
             </button>
-            <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; padding-bottom: 2rem;">
-                By submitting, you agree to be contacted by our team. We will review your responses and reach out shortly.
+            <p
+                style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; padding-bottom: 2rem;">
+                By submitting, you agree to be contacted by our team. We will review your responses and reach out
+                shortly.
             </p>
 
         </form>
@@ -443,4 +489,5 @@
         });
     </script>
 </body>
+
 </html>
